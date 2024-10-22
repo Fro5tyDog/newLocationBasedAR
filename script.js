@@ -151,9 +151,11 @@ function renderModels(){
                     model.setAttribute('scale', '0.15 0.15 0.15'); // Initial scale
                     model.setAttribute('visible', 'true'); // Initially visible 
                     
+                    // append to scene first before checking if it's loaded
+                    scene.appendChild(model);
+
                     model.addEventListener('model-loaded', () => {
                         model.classList.add(`${name}`);
-                        scene.appendChild(model);
                     })
                 })
             }
