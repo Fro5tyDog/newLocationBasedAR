@@ -15,9 +15,9 @@
     padding: 10px 20px;
     box-sizing: border-box;
     z-index: 10;
-    pointer-events: auto;
+    /* pointer-events: auto; */
     /* Prevent shrinking and wrapping on small screens */
-    flex-wrap: nowrap; /* Prevent the circles from wrapping */
+    flex-flow: row wrap;
 }
 
 .circle {
@@ -31,7 +31,6 @@
     justify-content: center;
     overflow: hidden;
     pointer-events: auto;
-
 }
 
 .circle img {
@@ -40,7 +39,7 @@
 }
 
 .circle-center {
-    margin: 0 auto;
+    margin: auto;
     background-color: #0ee85e;
     position: relative;
 }
@@ -156,5 +155,6 @@
     display: none;
     pointer-events: none; /* Disable interaction */
 }
+
 
 
