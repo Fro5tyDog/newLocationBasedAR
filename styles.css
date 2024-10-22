@@ -6,6 +6,13 @@
         height: 30px;
     }
 } */
+ 
+body {
+    overflow: hidden !important;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+}
 .circle-container {
     /* position: static; */
     top: 20px;
