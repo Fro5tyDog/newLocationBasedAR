@@ -23,7 +23,6 @@ function createDropdownContainer(){
     return new Promise((resolve, reject) => {
         
         try{
-            let containersCreated = false; 
             const dropdownContainer = document.getElementById('dropdown-container'); // container housing all dropdown items
             const topLeftCircle = document.getElementById('top-left-circle'); // top left circle people click on to view more models.
 
@@ -36,6 +35,9 @@ function createDropdownContainer(){
             .then(data => {
                 console.log('JSON loaded', data);
                 createThumbnails(data);
+
+                // resolve after thumbnails are created
+                resolve(true);
             })
             .catch(error => {
                 console.error('Error loading the JSON data:', error);
@@ -61,13 +63,6 @@ function createDropdownContainer(){
                     // assign thumbnails to the container
                     dropdownContainer.appendChild(thumbnail);
                 })
-            }
-
-            containersCreated = true;
-
-            // tell the program that all the containers have been created if there were no errors and once it has iterated through all the objects in the json.
-            if(containersCreated){
-                resolve(containersCreated);
             }
         }
         catch(error){
@@ -116,7 +111,6 @@ function renderModels(){
     return new Promise((resolve, reject) => {
         try{
             // Variables
-            let modelsRendered = false;
             let scene = document.querySelector('a-scene');
 
             // fetch json to create models.
@@ -125,6 +119,9 @@ function renderModels(){
            .then(data => {
                 console.log('JSON loaded', data);
                 createModels(data);
+
+                // resolve after models are created
+                resolve(true);
             })
            .catch(error => {
                 console.error('Error loading the JSON data:', error);
@@ -159,13 +156,6 @@ function renderModels(){
                     })
                 })
             }
-
-            modelsRendered = true;
-
-            if(modelsRendered){
-                resolve(modelsRendered);
-            }
-
         } 
         catch(error){
             reject(error);
