@@ -1,5 +1,7 @@
 let animationFrameId; // Store the animation frame ID globally
 
+
+
 // wait for dom to finish loading before loading models and updating UI
 document.addEventListener('DOMContentLoaded', function () {
     // const scene = document.querySelector('a-scene');
@@ -8,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
     //     console.log('A-Frame scene fully initialized');
         initializeMyApp();
     // });
+
 
 });
 
@@ -169,10 +172,86 @@ function renderModels(){
 // 2. Create models within a-frame
 // 3. Start Up Button.
 
+// Step 3 --------------------------------
+// Start Up Button
+
+function createStartScreen(){
+    return new Promise((resolve, reject) => {
+        // adding greyed-out class to prevent person from clicking on icons
+        document.querySelector('.circle-container').classList.add('greyed-out');
+        document.getElementById('top-left-circle').classList.add('greyed-out');
+        try{
+             // Handle "Tap to Start" button click
+             document.getElementById('start-button').addEventListener('click', startUp);
+
+            // Check for all a-entity elements and set their visibility to false
+            const entities = document.querySelectorAll('a-entity');
+            entities.forEach((entity) => {
+                entity.setAttribute('visible', 'false');
+            });
+
+            resolve(true);
+        } 
+        catch(error){
+            reject(error);
+        }   
+    })
+}
+
+// enabling UI and a-frame models to be seen once start button is clicked 
+async function startUp(){
+    // Remove the "greyed-out" class from other UI elements
+    document.querySelector('.circle-container').classList.remove('greyed-out');
+    document.getElementById('top-left-circle').classList.remove('greyed-out');
+
+    // Check for all a-entity elements and set their visibility to true
+    const entities = document.querySelectorAll('a-entity');
+    entities.forEach((entity) => {
+        entity.setAttribute('visible', 'true');
+    });
+
+    const locationDisplay = document.getElementById('location-display');
+    locationDisplay.innerHTML = `start`;   
+
+    // Hide the start screen
+    document.querySelector('.start').classList.add('hidden');
+
+    // call async functions here to run sequentially.
+    updateUI();
+    // await closestModelToPlayer();
+    // await updateText();
+    // await updateArrow();
+
+    console.log("START!");
+}
+
+// starts updating the UI.
+let rotationAngle = 0; // Keep track of the current rotation angle
+
+function updateUI() {
+    // Update arrow rotation
+    const arrow = document.querySelector(".arrow");
+    rotationAngle += 1; // Increment the rotation angle
+    arrow.style.transform = `translate(-50%, -50%) rotate(${rotationAngle}deg)`;
+
+    // Keep the rotation between 0 and 360 degrees
+    if (rotationAngle >= 360) {
+        rotationAngle = 0; // Reset to 0 after a full rotation
+    }
+
+    // Call the function recursively on each animation frame
+    requestAnimationFrame(updateUI);
+}
+
 async function initializeMyApp(){
+
     // 1.
     const dropdownRender = await createDropdownContainer();
 
     // 2.
     const modelRender = await renderModels();
+
+    // 3.
+    const startUpScreen = await createStartScreen();
+
 }

@@ -99,3 +99,48 @@
     width: 80%;
     height: auto;
 }
+
+/* CSS to center the start div */
+.start {
+    position: absolute;
+    background-color: gray;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    z-index: 15;
+}
+
+/* CSS for the image */
+.start img {
+    width: 200px; /* Set the width of the image */
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* Center the button below the image */
+.start button {
+    margin: 10px; /* Add space between image and button */
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 10px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    background-color: rgb(10, 156, 10);
+    border: 2px solid rgb(97, 97, 97);
+}
+
+/* Greys out all other UI elements before "Tap to Start" */
+.greyed-out {
+    opacity: 0; /* Make them semi-transparent */
+    pointer-events: none; /* Disable interaction */
+}
+
+/* Hide the start screen once clicked */
+.hidden {
+    display: none;
+    pointer-events: none; /* Disable interaction */
+}
