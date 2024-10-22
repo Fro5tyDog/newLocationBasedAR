@@ -1,4 +1,11 @@
 /* Styling for the circles */
+/* Media query for mobile devices (max-width 600px) */
+/* @media (max-width: 450px) {
+    .circle {
+        width: 30px;
+        height: 30px;
+    }
+} */
 .circle-container {
     /* position: static; */
     top: 20px;
@@ -24,8 +31,7 @@
     justify-content: center;
     overflow: hidden;
     pointer-events: auto;
-    /* Prevent shrinking */
-    flex-shrink: 0; /* Keep the circles from shrinking on smaller screens */
+
 }
 
 .circle img {
