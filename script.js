@@ -129,7 +129,7 @@ function renderModels(){
            .catch(error => {
                 console.error('Error loading the JSON data:', error);
             });
-
+  
             // Function to create each model from the json.
             function createModels(models){
                 models.forEach(modelSeparated => {
