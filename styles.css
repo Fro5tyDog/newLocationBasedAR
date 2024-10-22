@@ -1,14 +1,16 @@
 /* Styling for the circles */
 .circle-container {
-    position: fixed;
+    /* position: static; */
     top: 20px;
     width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: 0 20px;
+    padding: 10px 20px;
     box-sizing: border-box;
-    z-index: 10; /* Make sure this is above the A-Frame scene */
-    pointer-events: auto; /* Enable pointer events */
+    z-index: 10;
+    pointer-events: auto;
+    /* Prevent shrinking and wrapping on small screens */
+    flex-wrap: nowrap; /* Prevent the circles from wrapping */
 }
 
 .circle {
@@ -21,7 +23,9 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    pointer-events: auto; /* Ensure the circles can receive pointer events */
+    pointer-events: auto;
+    /* Prevent shrinking */
+    flex-shrink: 0; /* Keep the circles from shrinking on smaller screens */
 }
 
 .circle img {
@@ -45,7 +49,9 @@
     background: url("https://p9n2c8y2.rocketcdn.me/wp-content/uploads/2021/05/24.png.webp") center no-repeat;
     background-size: 115% 115%;
     z-index: 2000;
+    pointer-events: none;
 }
+
 
 
 .text-container {
@@ -144,3 +150,5 @@
     display: none;
     pointer-events: none; /* Disable interaction */
 }
+
+

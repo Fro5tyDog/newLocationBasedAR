@@ -204,10 +204,10 @@ async function startUp(){
     document.querySelector('.circle-container').classList.remove('greyed-out');
     document.getElementById('top-left-circle').classList.remove('greyed-out');
 
-    // Check for all a-entity elements and set their visibility to true
+    // Check for all a-entity elements and set their visibility to false
     const entities = document.querySelectorAll('a-entity');
     entities.forEach((entity) => {
-        entity.setAttribute('visible', 'true');
+        entity.setAttribute('visible', 'false');
     });
 
     const locationDisplay = document.getElementById('location-display');
