@@ -135,7 +135,7 @@
 
 /* Greys out all other UI elements before "Tap to Start" */
 .greyed-out {
-    opacity: 0; /* Make them semi-transparent */
+    opacity: 0.5; /* Make them semi-transparent */
     pointer-events: none; /* Disable interaction */
 }
 
